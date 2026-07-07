@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+  }
+}
+
 @font-face {
   font-family: "Ubuntu";
   src: url("./assets/fonts/Ubuntu-Regular.ttf") format("truetype");
@@ -20,5 +27,16 @@
 
 @theme {
   --font-sans: "Ubuntu", sans-serif;
-  --color-mint-500: oklch(0.72 0.11 178);
+
+  --color-primary: hsl(213, 96%, 18%);
+  --color-accent: hsl(243, 100%, 62%);
+  --color-accent-tint: hsl(228, 100%, 84%);
+  --color-selected: hsl(206, 94%, 87%);
+  --color-error: hsl(354, 84%, 57%);
+
+  --color-muted: hsl(231, 11%, 63%);
+  --color-border: hsl(229, 24%, 87%);
+  --color-surface: hsl(218, 100%, 97%);
+  --color-background: hsl(231, 100%, 99%);
+  --color-white: hsl(0, 100%, 100%);
 }
