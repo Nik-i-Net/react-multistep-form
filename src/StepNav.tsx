@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useFormContext } from "./state/FormContext";
 
 const STEPS = [
@@ -8,31 +9,38 @@ const STEPS = [
 ];
 
 function StepNav() {
-  const { state } = useFormContext();
+  const { state, dispatch } = useFormContext();
 
   return (
     <nav
-      className="px-6 py-8 text-white w-68.5 h-142 flex flex-col gap-6 bg-no-repeat bg-cover rounded-xl
+      className="px-8 py-9 text-white w-68.5 h-142 flex flex-col gap-7 bg-no-repeat bg-cover rounded-lg
         bg-[url('/bg-sidebar-desktop.svg')] max-md:bg-[url('/bg-sidebar-mobile.svg')]"
     >
-      {STEPS.map((step) => (
-        <div key={step.number} className="flex items-center gap-4">
-          <button
-            className={`rounded-full w-8 h-8 flex items-center justify-center font-medium
-            ${
-              step.number === state.activeStep
-                ? "bg-selected text-primary"
-                : "border border-white text-white"
-            }`}
-          >
-            {step.number}
-          </button>
-          <div className="hidden md:block">
-            <p className="text-muted text-sm uppercase">Step {step.number}</p>
-            <p className="text-white font-medium uppercase">{step.label}</p>
+      {STEPS.map((step) => {
+        const isActive = step.number === state.activeStep;
+        const isReachable = state.maxStep >= step.number && !state.isCompleted;
+        const isClickable = isReachable && !isActive;
+        const buttonClass = clsx(
+          "rounded-full w-8 h-8 flex items-center justify-center font-medium",
+          isActive ? "bg-selected text-primary" : "border border-white text-white",
+          isClickable ? "cursor-pointer" : "cursor-default",
+        );
+        const handleClick = isClickable
+          ? () => dispatch({ type: "GO_TO_STEP", payload: step.number })
+          : undefined;
+
+        return (
+          <div key={step.number} className="flex items-center gap-4">
+            <button onClick={handleClick} className={buttonClass} type="button">
+              {step.number}
+            </button>
+            <div className="hidden md:block">
+              <p className="text-muted text-[0.8125rem] leading-4 uppercase">Step {step.number}</p>
+              <p className="text-white text-sm font-bold tracking-wider uppercase">{step.label}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </nav>
   );
 }
