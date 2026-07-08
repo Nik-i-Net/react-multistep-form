@@ -16,7 +16,7 @@ export type FormState = {
 export type FormAction =
   | {
       type: "SET_PERSONAL_INFO";
-      payload: { name: string; email: string; phone: string };
+      payload: { name?: string; email?: string; phone?: string };
     }
   | { type: "SELECT_PLAN"; payload: PlanId }
   | { type: "SET_BILLING"; payload: BillingModeId }
