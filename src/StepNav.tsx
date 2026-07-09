@@ -35,7 +35,7 @@ function StepNav() {
               {step.number}
             </button>
             <div className="hidden md:block">
-              <p className="text-muted text-[0.8125rem] leading-4 uppercase">Step {step.number}</p>
+              <p className="text-muted text-xs leading-4 uppercase">Step {step.number}</p>
               <p className="text-white text-sm font-bold tracking-wider uppercase">{step.label}</p>
             </div>
           </div>

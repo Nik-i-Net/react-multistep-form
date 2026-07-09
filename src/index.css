@@ -37,5 +37,8 @@
   --color-muted: hsl(231, 11%, 63%);
   --color-border: hsl(229, 24%, 87%);
   --color-surface: hsl(218, 100%, 97%);
+  --color-background: hsl(231, 100%, 99%);
   --color-white: hsl(0, 100%, 100%);
+
+  --text-xs: 0.8125rem;
 }
