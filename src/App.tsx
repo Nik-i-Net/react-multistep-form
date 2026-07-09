@@ -55,9 +55,9 @@ function App() {
   return (
     <main className="min-h-screen bg-surface flex justify-center items-center p-4">
       <FormContext value={{ state, dispatch }}>
-        <div className="max-w-235 w-full flex gap-5 bg-white rounded-2xl p-4 shadow-xl">
+        <div className="max-w-235 w-full flex gap-4 bg-white rounded-2xl p-4 shadow-lg">
           <StepNav />
-          <div className="pt-10 pb-4 px-20 flex-1 flex flex-col justify-between">
+          <div className="pt-11 pb-4 px-21 flex-1 flex flex-col justify-between">
             <ActiveStep />
             <StepActions />
           </div>
