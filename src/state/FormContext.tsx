@@ -11,6 +11,7 @@ export type FormState = {
   activeStep: number;
   maxStep: number;
   isCompleted: boolean;
+  errors: Record<string, string | undefined>;
 };
 
 export type FormAction =
@@ -24,22 +25,10 @@ export type FormAction =
   | { type: "NEXT_STEP" }
   | { type: "BACK_STEP" }
   | { type: "GO_TO_STEP"; payload: number }
-  | { type: "CONFIRM_ORDER" };
+  | { type: "CONFIRM_ORDER" }
+  | { type: "SET_ERRORS"; payload: Record<string, string | undefined> };
 
-export type FormContextValue = {
-  state: FormState;
-  dispatch: Dispatch<FormAction>;
-};
-
-export const FormContext = createContext<FormContextValue | null>(null);
-
-export function useFormContext() {
-  const context = useContext(FormContext);
-  if (!context) throw new Error("useFormContext must be used within FormContext");
-  return context;
-}
-
-export const initialState: FormState = {
+export const initialFormState: FormState = {
   name: "",
   email: "",
   phone: "",
@@ -49,6 +38,7 @@ export const initialState: FormState = {
   activeStep: 1,
   maxStep: 1,
   isCompleted: false,
+  errors: {},
 };
 
 export const TOTAL_STEPS = 4;
@@ -98,7 +88,23 @@ export function formReducer(state: FormState, action: FormAction): FormState {
       if (state.activeStep !== TOTAL_STEPS) return state;
       return { ...state, isCompleted: true };
 
+    case "SET_ERRORS":
+      return { ...state, errors: { ...state.errors, ...action.payload } };
+
     default:
       throw new Error(`Unhandled action: ${action satisfies never}`);
   }
+}
+
+type FormContextValue = {
+  state: FormState;
+  dispatch: Dispatch<FormAction>;
+};
+
+export const FormContext = createContext<FormContextValue | null>(null);
+
+export function useFormContext() {
+  const context = useContext(FormContext);
+  if (!context) throw new Error("useFormContext must be used within FormContext");
+  return context;
 }

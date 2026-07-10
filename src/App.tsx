@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { FormContext, formReducer, initialState, useFormContext } from "./state/FormContext";
+import { FormContext, formReducer, initialFormState, useFormContext } from "./state/FormContext";
 import PersonalInfoStep from "./steps/01-PersonalInfo";
 import StepNav from "./StepNav";
 import CompleteStep from "./steps/Complete";
@@ -52,7 +52,7 @@ function StepActions() {
 }
 
 function App() {
-  const [state, dispatch] = useReducer(formReducer, initialState);
+  const [state, dispatch] = useReducer(formReducer, initialFormState);
 
   return (
     <main className="min-h-screen bg-surface flex justify-center items-center p-4">
