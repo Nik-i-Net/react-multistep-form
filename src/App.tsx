@@ -43,7 +43,9 @@ function StepActions() {
       {step < 4 ? (
         <Button onClick={() => dispatch({ type: "NEXT_STEP" })}>Next Step</Button>
       ) : (
-        <Button onClick={() => dispatch({ type: "CONFIRM_ORDER" })}>Confirm</Button>
+        <Button variant="accent" onClick={() => dispatch({ type: "CONFIRM_ORDER" })}>
+          Confirm
+        </Button>
       )}
     </div>
   );

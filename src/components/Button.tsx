@@ -1,13 +1,14 @@
 import type { ButtonHTMLAttributes } from "react";
 
 type ButtonProps = {
-  variant?: "primary" | "ghost";
+  variant?: "primary" | "accent" | "ghost";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 function Button({ variant = "primary", className, children, ...props }: ButtonProps) {
   const baseClasses = "rounded-md font-medium transition-colors hover:cursor-pointer";
   const styles = {
     primary: "px-6 py-3 bg-primary text-white hover:bg-primary/90",
+    accent: "px-6 py-3 bg-accent text-white hover:bg-accent/90",
     ghost: "bg-transparent text-muted hover:text-primary",
   };
 
