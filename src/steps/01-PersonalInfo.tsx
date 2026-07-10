@@ -1,37 +1,18 @@
-import { z } from "zod";
 import Input from "../components/Input";
 import { useFormContext } from "../state/FormContext";
 import StepHeader from "../StepHeader";
+import { validateName, validateEmail, validatePhone } from "../validation";
 import { useState } from "react";
 
 function PersonalInfoStep() {
   const { state, dispatch } = useFormContext();
   const [touched, setTouched] = useState({ name: false, email: false, phone: false });
   const [isPhoneFocused, setIsPhoneFocused] = useState(false);
+  const validators = { name: validateName, email: validateEmail, phone: validatePhone } as const;
 
   function validateField(field: "name" | "email" | "phone", value: string) {
-    if (!value) {
-      dispatch({ type: "SET_ERRORS", payload: { [field]: "Required" } });
-      return;
-    }
-
-    const schemas = {
-      name: z
-        .string()
-        .regex(/^[a-z\s.'-]+$/i, "Only letters and spaces are allowed")
-        .min(4, "Too short")
-        .max(40, "Too long"),
-      email: z.email("Invalid email address").max(254, "Too long"),
-      phone: z.string().regex(/^\d{10}$/, "Should consist of exactly 10 digits"),
-    };
-
-    let errorMsg: string | undefined;
-    const parseResult = schemas[field].safeParse(value);
-    if (parseResult.error) {
-      errorMsg = parseResult.error.issues[0].message;
-    }
-
-    dispatch({ type: "SET_ERRORS", payload: { [field]: errorMsg } });
+    const error = validators[field](value);
+    dispatch({ type: "SET_ERRORS", payload: { [field]: error } });
   }
 
   function handleOnChange(field: "name" | "email" | "phone") {
@@ -39,10 +20,8 @@ function PersonalInfoStep() {
       let value = e.target.value;
       if (field === "phone") value = value.replace(/\D/g, "");
 
-      if (touched[field]) {
-        validateField(field, value);
-      }
-
+      if (state.errors[field]) setTouched({ ...touched, [field]: true });
+      if (touched[field]) validateField(field, value);
       dispatch({ type: "SET_PERSONAL_INFO", payload: { [field]: value } });
     };
   }

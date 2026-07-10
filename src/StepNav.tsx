@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useFormContext } from "./state/FormContext";
+import { useFormNavigation } from "./hooks/useFormNavigation";
 
 const STEPS = [
   { number: 1, label: "Your info" },
@@ -9,7 +10,8 @@ const STEPS = [
 ];
 
 function StepNav() {
-  const { state, dispatch } = useFormContext();
+  const { state } = useFormContext();
+  const { goToStep } = useFormNavigation();
 
   return (
     <nav
@@ -26,7 +28,7 @@ function StepNav() {
           isClickable ? "cursor-pointer" : "cursor-default",
         );
         const handleClick = isClickable
-          ? () => dispatch({ type: "GO_TO_STEP", payload: step.number })
+          ? () => goToStep(step.number)
           : undefined;
 
         return (

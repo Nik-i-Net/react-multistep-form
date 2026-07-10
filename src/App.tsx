@@ -7,6 +7,7 @@ import SelectPlanStep from "./steps/02-SelectPlan";
 import AddOnsStep from "./steps/03-AddOns";
 import SummaryStep from "./steps/04-Summary";
 import Button from "./components/Button";
+import { useFormNavigation } from "./hooks/useFormNavigation";
 
 function ActiveStep() {
   const { state } = useFormContext();
@@ -29,6 +30,7 @@ function ActiveStep() {
 
 function StepActions() {
   const { state, dispatch } = useFormContext();
+  const { nextStep, backStep } = useFormNavigation();
   const step = state.activeStep;
 
   if (state.isCompleted) return null;
@@ -36,12 +38,12 @@ function StepActions() {
   return (
     <div className={`flex ${step === 1 ? "justify-end" : "justify-between"}`}>
       {step > 1 && (
-        <Button variant="ghost" onClick={() => dispatch({ type: "BACK_STEP" })}>
+        <Button variant="ghost" onClick={backStep}>
           Go Back
         </Button>
       )}
       {step < 4 ? (
-        <Button onClick={() => dispatch({ type: "NEXT_STEP" })}>Next Step</Button>
+        <Button onClick={nextStep}>Next Step</Button>
       ) : (
         <Button variant="accent" onClick={() => dispatch({ type: "CONFIRM_ORDER" })}>
           Confirm
