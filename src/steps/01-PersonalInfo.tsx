@@ -14,7 +14,7 @@ function PersonalInfoStep() {
     };
 
   return (
-    <div>
+    <div className="select-none">
       <StepHeader
         title="Personal info"
         description="Please provide your name, email address, and phone number."

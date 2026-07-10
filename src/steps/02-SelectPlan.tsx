@@ -13,7 +13,7 @@ function PlanCard({ plan, billingMode }: PlanCardProps) {
 
   return (
     <label
-      className="select-none cursor-pointer pt-5 px-4 pb-4 rounded-lg border border-border
+      className="cursor-pointer pt-5 px-4 pb-4 rounded-lg border border-border
       has-checked:border-accent has-checked:bg-background
       hover:border-accent"
     >
@@ -43,7 +43,7 @@ function SelectPlanStep() {
   const billingMode = BILLING_MODES.find((i) => i.id === state.billingId)!;
 
   return (
-    <div>
+    <div className="select-none">
       <StepHeader
         title="Select your plan"
         description="You have the option of monthly or yearly billing."

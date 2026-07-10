@@ -9,7 +9,7 @@ function AddOnsStep() {
   const billingMode = BILLING_MODES.find((i) => i.id === state.billingId)!;
 
   return (
-    <div>
+    <div className="select-none">
       <StepHeader title="Pick add-ons" description="Add-ons help enhance your gaming experience." />
       <div className="mt-9 flex flex-col gap-4">
         {ADD_ONS.map((addOn) => {
@@ -19,7 +19,7 @@ function AddOnsStep() {
             <label
               className={clsx(
                 "py-4 px-6 flex justify-between items-center",
-                "border rounded-md  cursor-pointer hover:border-accent",
+                "border rounded-md cursor-pointer hover:border-accent",
                 isActive ? "border-accent bg-background" : "border-border",
               )}
               key={addOn.id}

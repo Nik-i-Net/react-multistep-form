@@ -11,7 +11,7 @@ function SummaryStep() {
     (plan.price + addOns.reduce((sum, cur) => sum + cur.price, 0)) * billingMode.multiplier;
 
   return (
-    <div>
+    <div className="select-none">
       <StepHeader
         title="Finishing up"
         description="Double-check everything looks OK before confirming."
