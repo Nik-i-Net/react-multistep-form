@@ -10,7 +10,7 @@ export function validateName(value: string): string | undefined {
   const nameSchema = z
     .string()
     .nonempty("Required")
-    .regex(/^[a-z\s.'-]+$/i, "Only letters and spaces are allowed")
+    .regex(/^[a-z\s.'-]+$/i, "Only letters and spaces allowed")
     .min(4, "Too short")
     .max(40, "Too long");
   return validate(nameSchema, value);
@@ -29,7 +29,7 @@ export function validatePhone(value: string): string | undefined {
   const phoneSchema = z
     .string()
     .nonempty("Required")
-    .regex(/^\d{10}$/, "Should consist of exactly 10 digits");
+    .regex(/^\d{10}$/, "Must be a 10-digit number");
   return validate(phoneSchema, value);
 }
 

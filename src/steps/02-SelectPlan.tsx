@@ -15,7 +15,7 @@ function PlanCard({ plan, billingMode }: PlanCardProps) {
     <label
       className="cursor-pointer pt-5 px-4 pb-4 rounded-lg border border-border
       has-checked:border-accent has-checked:bg-background
-      hover:border-accent"
+      hover:border-accent max-md:flex max-md:gap-3 max-md:py-3.75"
     >
       <input
         type="radio"
@@ -24,16 +24,18 @@ function PlanCard({ plan, billingMode }: PlanCardProps) {
         checked={state.planId === plan.id}
         onChange={() => dispatch({ type: "SELECT_PLAN", payload: plan.id })}
       />
-      <img src={plan.icon} alt="" />
-      <p className="text-primary font-bold mt-10">{plan.name}</p>
-      <p className="text-muted text-sm">
-        ${plan.price * billingMode.multiplier}/{billingMode.short}
-      </p>
-      {billingMode.id === "yearly" && (
-        <p className="mt-1 text-xs text-primary font-medium tracking-tighter">
-          {billingMode.promoLabel}
+      <img src={plan.icon} alt="" className="max-md:h-10 max-md:mt-1" />
+      <div>
+        <p className="text-primary font-bold mt-10 max-md:mt-0">{plan.name}</p>
+        <p className="text-muted text-sm">
+          ${plan.price * billingMode.multiplier}/{billingMode.short}
         </p>
-      )}
+        {billingMode.id === "yearly" && (
+          <p className="mt-1 text-xs text-primary font-medium tracking-tighter">
+            {billingMode.promoLabel}
+          </p>
+        )}
+      </div>
     </label>
   );
 }
@@ -49,13 +51,16 @@ function SelectPlanStep() {
         description="You have the option of monthly or yearly billing."
       />
 
-      <div className="mt-9 grid grid-cols-3 gap-4.5" role="radiogroup">
+      <div
+        className="mt-9 grid grid-cols-3 gap-4.5 max-md:mt-5 max-md:grid-cols-1 max-md:gap-3"
+        role="radiogroup"
+      >
         {PLANS.map((plan) => (
           <PlanCard key={plan.id} plan={plan} billingMode={billingMode} />
         ))}
       </div>
 
-      <div className="mt-8 py-3.5 flex justify-center items-center gap-6 rounded-lg bg-background">
+      <div className="mt-8 py-3.5 flex justify-center items-center gap-6 rounded-lg bg-background max-md:mt-6 max-md:py-3">
         <label className="cursor-pointer">
           <input
             type="radio"

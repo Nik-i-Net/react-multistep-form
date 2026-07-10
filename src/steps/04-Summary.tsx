@@ -17,10 +17,10 @@ function SummaryStep() {
         description="Double-check everything looks OK before confirming."
       />
 
-      <div className="mt-9 pt-4 px-6 pb-6 rounded-lg bg-background flex flex-col gap-5">
+      <div className="mt-9 pt-4 px-6 pb-6 rounded-lg bg-background flex flex-col gap-5 max-md:mt-5 max-md:gap-2.5 max-md:pb-4">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-primary font-medium">
+            <p className="text-primary font-medium max-md:text-sm max-md:font-bold">
               {plan.name} ({billingMode.name})
             </p>
             <button
@@ -31,7 +31,7 @@ function SummaryStep() {
               Change
             </button>
           </div>
-          <p className="text-primary font-bold">
+          <p className="text-primary font-bold max-md:text-sm">
             ${plan.price * billingMode.multiplier}/{billingMode.short}
           </p>
         </div>
@@ -40,7 +40,7 @@ function SummaryStep() {
           <>
             <hr className="border-0 border-b border-border" />
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 max-md:gap-2.5">
               {addOns.map((addOn) => (
                 <div className="flex justify-between" key={addOn.id}>
                   <p className="text-sm text-muted">{addOn.name}</p>
@@ -58,7 +58,7 @@ function SummaryStep() {
         <p className="text-sm text-muted">
           Total (per {billingMode.id === "monthly" ? "month" : "year"})
         </p>
-        <p className="text-xl font-bold text-accent">
+        <p className="text-xl font-bold text-accent max-md:text-base">
           ${total}/{billingMode.short}
         </p>
       </div>

@@ -43,7 +43,7 @@ function PersonalInfoStep() {
         name="name"
         type="text"
         placeholder="e.g. Stephen King"
-        className="mt-9"
+        className="mt-9 max-md:mt-5"
         value={state.name}
         error={state.errors.name}
         onChange={handleOnChange("name")}
@@ -57,7 +57,7 @@ function PersonalInfoStep() {
         name="email"
         type="email"
         placeholder="e.g. stephenking@lorem.com"
-        className="mt-6"
+        className="mt-6 max-md:mt-4"
         value={state.email}
         error={state.errors.email}
         onChange={handleOnChange("email")}
@@ -71,7 +71,7 @@ function PersonalInfoStep() {
         name="phone"
         type="tel"
         placeholder="e.g. +1 234 567 890"
-        className="mt-6"
+        className="mt-6 max-md:mt-4"
         value={isPhoneFocused ? state.phone : prettifyPhone(state.phone)}
         error={state.errors.phone}
         onChange={handleOnChange("phone")}

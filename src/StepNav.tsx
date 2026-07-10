@@ -16,7 +16,8 @@ function StepNav() {
   return (
     <nav
       className="px-8 py-9 text-white w-68.5 h-142 flex flex-col gap-7 bg-no-repeat bg-cover rounded-lg
-        bg-[url('/bg-sidebar-desktop.svg')] max-md:bg-[url('/bg-sidebar-mobile.svg')]"
+        bg-[url('/bg-sidebar-desktop.svg')] max-md:bg-[url('/bg-sidebar-mobile.svg')]
+        max-md:flex-row max-md:w-full max-md:h-48 max-md:rounded-none max-md:justify-center max-md:items-start max-md:gap-4"
     >
       {STEPS.map((step) => {
         const isActive = step.number === state.activeStep;
@@ -27,9 +28,7 @@ function StepNav() {
           isActive ? "bg-selected text-primary" : "border border-white text-white",
           isClickable ? "cursor-pointer" : "cursor-default",
         );
-        const handleClick = isClickable
-          ? () => goToStep(step.number)
-          : undefined;
+        const handleClick = isClickable ? () => goToStep(step.number) : undefined;
 
         return (
           <div key={step.number} className="flex items-center gap-4">
