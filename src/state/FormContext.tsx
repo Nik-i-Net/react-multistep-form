@@ -1,5 +1,5 @@
 import { createContext, useContext, type Dispatch } from "react";
-import type { AddOnId, BillingModeId, PlanId } from "../data";
+import type { AddOnId, BillingModeId, PlanId } from "../data/subscriptions";
 
 export type FormState = {
   name: string;

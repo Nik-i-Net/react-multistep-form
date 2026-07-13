@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { BILLING_MODES, PLANS, type BillingMode, type Plan } from "../data";
+import { BILLING_MODES, PLANS, type BillingMode, type Plan } from "../data/subscriptions";
 import { useFormContext } from "../state/FormContext";
-import StepHeader from "../StepHeader";
+import StepHeader from "../components/StepHeader";
 
 interface PlanCardProps {
   plan: Plan;

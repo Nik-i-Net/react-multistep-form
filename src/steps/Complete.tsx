@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import thankYouIcon from "../assets/icons/icon-thank-you.svg";
-import StepHeader from "../StepHeader";
+import StepHeader from "../components/StepHeader";
 
 function CompleteStep() {
   return (

@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { ADD_ONS, BILLING_MODES } from "../data";
+import { ADD_ONS, BILLING_MODES } from "../data/subscriptions";
 import { useFormContext } from "../state/FormContext";
-import StepHeader from "../StepHeader";
+import StepHeader from "../components/StepHeader";
 import checkmarkIcon from "../assets/icons/icon-checkmark.svg";
 
 function AddOnsStep() {

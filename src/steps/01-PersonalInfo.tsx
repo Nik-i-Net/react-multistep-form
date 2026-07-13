@@ -1,8 +1,8 @@
-import Input from "../components/Input";
+import Input from "../components/ui/Input";
 import { useFormContext } from "../state/FormContext";
-import StepHeader from "../StepHeader";
-import { validateName, validateEmail, validatePhone } from "../validation";
+import { validateName, validateEmail, validatePhone } from "../lib/validation";
 import { useState } from "react";
+import StepHeader from "../components/StepHeader";
 
 function PersonalInfoStep() {
   const { state, dispatch } = useFormContext();

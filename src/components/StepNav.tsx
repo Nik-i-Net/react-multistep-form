@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { useFormContext } from "./state/FormContext";
-import { useFormNavigation } from "./hooks/useFormNavigation";
+import { useFormContext } from "../state/FormContext";
+import { useFormNavigation } from "../hooks/useFormNavigation";
 
 const STEPS = [
   { number: 1, label: "Your info" },

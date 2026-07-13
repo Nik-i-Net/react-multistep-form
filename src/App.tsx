@@ -1,12 +1,12 @@
 import { useReducer } from "react";
 import { FormContext, formReducer, initialFormState, useFormContext } from "./state/FormContext";
 import PersonalInfoStep from "./steps/01-PersonalInfo";
-import StepNav from "./StepNav";
+import StepNav from "./components/StepNav";
 import CompleteStep from "./steps/Complete";
 import SelectPlanStep from "./steps/02-SelectPlan";
 import AddOnsStep from "./steps/03-AddOns";
 import SummaryStep from "./steps/04-Summary";
-import Button from "./components/Button";
+import Button from "./components/ui/Button";
 import { useFormNavigation } from "./hooks/useFormNavigation";
 import clsx from "clsx";
 
@@ -37,14 +37,14 @@ function StepActions() {
   if (state.isCompleted) return null;
 
   return (
-      <div
-        className={clsx(
-          "flex",
-          step === 1 ? "justify-end" : "justify-between",
-          "max-md:fixed max-md:inset-x-0 max-md:bottom-0 max-md:p-3.5 max-md:bg-white",
-        )}
-      >
-        {step > 1 && (
+    <div
+      className={clsx(
+        "flex",
+        step === 1 ? "justify-end" : "justify-between",
+        "max-md:fixed max-md:inset-x-0 max-md:bottom-0 max-md:p-3.5 max-md:bg-white",
+      )}
+    >
+      {step > 1 && (
         <Button variant="ghost" onClick={backStep}>
           Go Back
         </Button>

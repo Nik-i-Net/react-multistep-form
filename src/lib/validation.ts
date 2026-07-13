@@ -1,5 +1,5 @@
 import { z, ZodType } from "zod";
-import type { FormState } from "./state/FormContext";
+import type { FormState } from "../state/FormContext";
 
 function validate(schema: ZodType, value: string): string | undefined {
   const result = schema.safeParse(value);

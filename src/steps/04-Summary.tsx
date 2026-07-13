@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { ADD_ONS, BILLING_MODES, PLANS } from "../data";
+import { ADD_ONS, BILLING_MODES, PLANS } from "../data/subscriptions";
 import { useFormContext } from "../state/FormContext";
-import StepHeader from "../StepHeader";
+import StepHeader from "../components/StepHeader";
 
 function SummaryStep() {
   const { state, dispatch } = useFormContext();
