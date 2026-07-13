@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ADD_ONS, BILLING_MODES, PLANS } from "../data";
 import { useFormContext } from "../state/FormContext";
 import StepHeader from "../StepHeader";
@@ -17,7 +18,12 @@ function SummaryStep() {
         description="Double-check everything looks OK before confirming."
       />
 
-      <div className="mt-9 pt-4 px-6 pb-6 rounded-lg bg-background flex flex-col gap-5 max-md:mt-5 max-md:gap-2.5 max-md:pb-4">
+      <div
+        className={clsx(
+          "flex flex-col gap-5 mt-9 pt-4 px-6 pb-6 bg-background rounded-lg",
+          "max-md:gap-2.5 max-md:mt-5 max-md:pb-4",
+        )}
+      >
         <div className="flex justify-between items-center">
           <div>
             <p className="text-primary font-medium max-md:text-sm max-md:font-bold">
@@ -25,7 +31,7 @@ function SummaryStep() {
             </p>
             <button
               type="button"
-              className="text-sm text-muted font-medium underline cursor-pointer hover:text-accent"
+              className="text-sm font-medium underline text-muted cursor-pointer hover:text-accent"
               onClick={() => dispatch({ type: "GO_TO_STEP", payload: 2 })}
             >
               Change
@@ -54,7 +60,7 @@ function SummaryStep() {
         )}
       </div>
 
-      <div className="mt-5 px-6 flex justify-between items-center">
+      <div className="flex justify-between items-center mt-5 px-6">
         <p className="text-sm text-muted">
           Total (per {billingMode.id === "monthly" ? "month" : "year"})
         </p>

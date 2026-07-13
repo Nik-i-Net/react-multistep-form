@@ -11,14 +11,14 @@ function AddOnsStep() {
   return (
     <div className="select-none">
       <StepHeader title="Pick add-ons" description="Add-ons help enhance your gaming experience." />
-      <div className="mt-9 flex flex-col gap-4 max-md:mt-5 max-md:gap-3">
+      <div className="flex flex-col gap-4 mt-9 max-md:gap-3 max-md:mt-5">
         {ADD_ONS.map((addOn) => {
           const isActive = state.addOnIds.includes(addOn.id);
 
           return (
             <label
               className={clsx(
-                "py-4 px-6 flex justify-between items-center",
+                "flex justify-between items-center py-4 px-6",
                 "border rounded-md cursor-pointer hover:border-accent",
                 isActive ? "border-accent bg-background" : "border-border",
                 "max-md:py-2 max-md:px-4",
@@ -34,7 +34,7 @@ function AddOnsStep() {
                 />
                 <span
                   className={clsx(
-                    "w-5 h-5 border border-border rounded-sm flex justify-center items-center",
+                    "flex justify-center items-center w-5 h-5 border border-border rounded-sm",
                     isActive && "bg-accent",
                   )}
                   aria-hidden
@@ -49,7 +49,7 @@ function AddOnsStep() {
                   </p>
                 </div>
               </div>
-              <p className="text-sm text-accent font-medium max-md:text-xs">
+              <p className="text-sm font-medium text-accent max-md:text-xs">
                 +${addOn.price * billingMode.multiplier}/{billingMode.short}
               </p>
             </label>

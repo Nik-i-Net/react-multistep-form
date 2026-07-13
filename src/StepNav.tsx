@@ -15,9 +15,10 @@ function StepNav() {
 
   return (
     <nav
-      className="px-8 py-9 text-white w-68.5 h-142 flex flex-col gap-7 bg-no-repeat bg-cover rounded-lg
-        bg-[url('/bg-sidebar-desktop.svg')] max-md:bg-[url('/bg-sidebar-mobile.svg')]
-        max-md:flex-row max-md:w-full max-md:h-48 max-md:rounded-none max-md:justify-center max-md:items-start max-md:gap-4"
+      className={clsx(
+        "flex flex-col gap-7 px-8 py-9 w-68.5 h-142 text-white bg-[url('/bg-sidebar-desktop.svg')] bg-no-repeat bg-cover rounded-lg",
+        "max-md:flex-row max-md:items-start max-md:justify-center max-md:gap-4 max-md:w-full max-md:h-48 max-md:rounded-none max-md:bg-[url('/bg-sidebar-mobile.svg')]",
+      )}
     >
       {STEPS.map((step) => {
         const isActive = step.number === state.activeStep;

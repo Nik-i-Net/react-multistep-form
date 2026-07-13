@@ -13,9 +13,11 @@ function PlanCard({ plan, billingMode }: PlanCardProps) {
 
   return (
     <label
-      className="cursor-pointer pt-5 px-4 pb-4 rounded-lg border border-border
-      has-checked:border-accent has-checked:bg-background
-      hover:border-accent max-md:flex max-md:gap-3 max-md:py-3.75"
+      className={clsx(
+        "pt-5 px-4 pb-4 rounded-lg border border-border cursor-pointer",
+        "hover:border-accent has-checked:border-accent has-checked:bg-background",
+        "max-md:flex max-md:gap-3 max-md:py-3.75",
+      )}
     >
       <input
         type="radio"
@@ -24,14 +26,14 @@ function PlanCard({ plan, billingMode }: PlanCardProps) {
         checked={state.planId === plan.id}
         onChange={() => dispatch({ type: "SELECT_PLAN", payload: plan.id })}
       />
-      <img src={plan.icon} alt="" className="max-md:h-10 max-md:mt-1" />
+      <img src={plan.icon} alt="" className="max-md:mt-1 max-md:h-10" />
       <div>
-        <p className="text-primary font-bold mt-10 max-md:mt-0">{plan.name}</p>
+        <p className="mt-10 text-primary font-bold max-md:mt-0">{plan.name}</p>
         <p className="text-muted text-sm">
           ${plan.price * billingMode.multiplier}/{billingMode.short}
         </p>
         {billingMode.id === "yearly" && (
-          <p className="mt-1 text-xs text-primary font-medium tracking-tighter">
+          <p className="mt-1 text-xs font-medium tracking-tighter text-primary">
             {billingMode.promoLabel}
           </p>
         )}
@@ -52,7 +54,7 @@ function SelectPlanStep() {
       />
 
       <div
-        className="mt-9 grid grid-cols-3 gap-4.5 max-md:mt-5 max-md:grid-cols-1 max-md:gap-3"
+        className="grid grid-cols-3 gap-4.5 mt-9 max-md:grid-cols-1 max-md:gap-3 max-md:mt-5"
         role="radiogroup"
       >
         {PLANS.map((plan) => (
@@ -60,7 +62,7 @@ function SelectPlanStep() {
         ))}
       </div>
 
-      <div className="mt-8 py-3.5 flex justify-center items-center gap-6 rounded-lg bg-background max-md:mt-6 max-md:py-3">
+      <div className="flex justify-center items-center gap-6 mt-8 py-3.5 bg-background rounded-lg max-md:mt-6 max-md:py-3">
         <label className="cursor-pointer">
           <input
             type="radio"
@@ -81,7 +83,7 @@ function SelectPlanStep() {
         </label>
 
         <div
-          className="w-9 h-5 p-1 rounded-full bg-primary cursor-pointer transition-all"
+          className="w-9 h-5 p-1 bg-primary rounded-full cursor-pointer transition-all"
           onClick={() =>
             dispatch({
               type: "SET_BILLING",

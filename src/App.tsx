@@ -37,14 +37,14 @@ function StepActions() {
   if (state.isCompleted) return null;
 
   return (
-    <div
-      className={clsx(
-        "flex",
-        step === 1 ? "justify-end" : "justify-between",
-        "max-md:fixed max-md:bottom-0 max-md:left-0 max-md:right-0 max-md:bg-white max-md:p-3.5",
-      )}
-    >
-      {step > 1 && (
+      <div
+        className={clsx(
+          "flex",
+          step === 1 ? "justify-end" : "justify-between",
+          "max-md:fixed max-md:inset-x-0 max-md:bottom-0 max-md:p-3.5 max-md:bg-white",
+        )}
+      >
+        {step > 1 && (
         <Button variant="ghost" onClick={backStep}>
           Go Back
         </Button>
@@ -64,11 +64,22 @@ function App() {
   const [state, dispatch] = useReducer(formReducer, initialFormState);
 
   return (
-    <main className="min-h-screen bg-surface flex justify-center items-center p-4 max-md:p-0">
+    <main className="min-h-screen flex justify-center items-center p-4 bg-surface max-md:p-0">
       <FormContext value={{ state, dispatch }}>
-        <div className="max-w-235 w-full flex gap-4 bg-white rounded-2xl p-4 shadow-lg max-md:bg-transparent max-md:shadow-none max-md:p-0 max-md:flex-col max-md:items-center max-md:min-h-screen">
+        <div
+          className={clsx(
+            "max-w-235 w-full flex gap-4 p-4 bg-white rounded-2xl shadow-lg",
+            "max-md:min-h-screen max-md:flex-col max-md:items-center max-md:p-0 max-md:bg-transparent max-md:shadow-none",
+          )}
+        >
           <StepNav />
-          <div className="pt-11 pb-4 px-21 flex-1 flex flex-col justify-between max-md:bg-white max-md:rounded-lg max-md:w-9/10 max-md:shadow-lg max-md:px-6 max-md:py-8 max-md:-mt-26 max-md:flex-0 max-lg:px-6">
+          <div
+            className={clsx(
+              "flex flex-col flex-1 justify-between pt-11 pb-4 px-21",
+              "max-md:w-9/10 max-md:flex-0 max-md:px-6 max-md:py-8 max-md:-mt-26 max-md:bg-white max-md:rounded-lg max-md:shadow-lg",
+              "max-lg:px-6",
+            )}
+          >
             <ActiveStep />
             <StepActions />
           </div>

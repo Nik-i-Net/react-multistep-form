@@ -1,9 +1,15 @@
+import clsx from "clsx";
 import thankYouIcon from "../assets/icons/icon-thank-you.svg";
 import StepHeader from "../StepHeader";
 
 function CompleteStep() {
   return (
-    <div className="h-full flex flex-col justify-center items-center gap-8 text-center max-md:gap-6 max-md:tracking-tight max-md:py-10">
+    <div
+      className={clsx(
+        "flex flex-col justify-center items-center gap-8 h-full text-center",
+        "max-md:gap-6 max-md:py-10 max-md:tracking-tight",
+      )}
+    >
       <img src={thankYouIcon} className="w-20 h-20 max-md:w-14 max-md:h-14" alt="" />
       <StepHeader
         title="Thank you!"
